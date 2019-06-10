@@ -1,0 +1,30 @@
+<div class="row mt-5">
+    <div class="col-md-10 gedf-main mx-auto">
+
+        <!--- \\\\\\\Post-->
+        <div class="card gedf-card">
+            <div class="card-header">
+                <h4>Crea un post</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label class="sr-only" for="message">post</label>
+                    <textarea class="form-control" id="message" rows="2" placeholder="¿Qué estás pensando?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Compartir</button>
+            </div>
+        </div>
+        <!-- Post /////-->
+
+        <ng-container *ngIf="posts; else elseTemplate">
+            <div *ngFor="let post of posts">
+                <app-post UserName="{{ post.UserName }}" Content="{{ post.Content}}"></app-post>
+            </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+            <h4 class="d-block text-center">No hay posts disponibles</h4>
+        </ng-template>
+
+
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container text-center p-lg-5">
+    <form [formGroup]="formLogin" class="form mx-auto col-lg-4" (submit)="login(formLogin.value)">
+        <h1 class="text-light">Talkee</h1>
+        <img class="mb-5" src="../assets/logo.png" alt="" width="150" height="150">
+        <h1 class="h3 mb-3 font-weight-normal text-white">Iniciar sesión</h1>
+        <label for="inputEmail" class="sr-only">Correo electrónico</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-at"></i></span>
+            </div>
+            <input type="email" formControlName="email" id="inputEmail" class="form-control" placeholder="Correo electrónico" required autofocus>
+        </div>
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+            </div>
+            <input type="password" formControlName="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+    </form>
+    <div class="container text-center p-lg-5">
+        <span>¿No tienes cuenta? </span>
+        <a [routerLink]="['/register']" routerLinkActive="router-link-active">Registrate aquí</a>
+    </div>
+</div>

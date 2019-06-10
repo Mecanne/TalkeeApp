@@ -1,0 +1,16 @@
+nav {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+nav a {
+    font-weight: bold;
+}
+
+.dropdown-item:hover {
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ml-auto .dropdown-menu {
+    left: auto !important;
+    right: 0px;
+}

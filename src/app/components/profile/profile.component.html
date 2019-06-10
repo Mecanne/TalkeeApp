@@ -1,0 +1,43 @@
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="h5">@LeeCross</div>
+                <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby, Java, Node.js, etc.
+                </div>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="h6 text-muted">Followers</div>
+                    <div class="h5">5.2342</div>
+                </li>
+                <li class="list-group-item">
+                    <div class="h6 text-muted">Following</div>
+                    <div class="h5">6758</div>
+                </li>
+                <li class="list-group-item">
+                    <a class="nav-link dropdown-item" [routerLink]="[ '/settings' ]" routerLinkActive="active"><i class="fas fa-cog"></i> Configuracion del perfil</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-8 gedf-main">
+
+        <!--- \\\\\\\Post-->
+        <div class="card gedf-card">
+            <div class="card-header">
+                <h4>Crea un post</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label class="sr-only" for="message">post</label>
+                    <textarea class="form-control" id="message" rows="2" placeholder="¿Qué estás pensando?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Compartir</button>
+            </div>
+        </div>
+        <!-- Post /////-->
+
+        <app-post UserName="Daniel" Content="Hola"></app-post>
+
+    </div>
+</div>
