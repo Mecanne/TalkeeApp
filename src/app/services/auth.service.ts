@@ -3,13 +3,16 @@ import { LoginModel } from '../models/login-model';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
 import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements CanActivate {
+  canActivate(route: import('@angular/router').ActivatedRouteSnapshot, state: import('@angular/router').RouterStateSnapshot): boolean | import('@angular/router').UrlTree | import('rxjs').Observable<boolean | import('@angular/router').UrlTree> | Promise<boolean | import('@angular/router').UrlTree> {
+    return this.isAuthenticated();
+  }
 
   constructor(private http: HttpClient, private toastr: ToastrService, private router: Router, private userService: UserService) { }
 

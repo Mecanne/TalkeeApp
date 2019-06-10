@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, EmailValidator, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { RegisterModel } from 'src/app/models/register-model';
@@ -18,9 +18,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.formRegister = this.fb.group({
-      email: '',
-      password: '',
-      passwordConfirm: ''
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(8)])
     });
   }
 
@@ -34,6 +34,10 @@ export class RegisterComponent implements OnInit {
     } else {
       this.toastr.error('Password must match!');
     }
+  }
+
+  log(log: any){
+    console.log(log);
   }
 
 }

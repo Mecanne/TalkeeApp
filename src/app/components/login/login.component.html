@@ -1,5 +1,5 @@
 <div class="container text-center p-lg-5">
-    <form [formGroup]="formLogin" class="form mx-auto col-lg-4" (submit)="login(formLogin.value)">
+    <form [formGroup]="formLogin" class="form mx-auto col-lg-4">
         <h1 class="text-light">Talkee</h1>
         <img class="mb-5" src="../assets/logo.png" alt="" width="150" height="150">
         <h1 class="h3 mb-3 font-weight-normal text-white">Iniciar sesión</h1>
@@ -17,7 +17,7 @@
             </div>
             <input type="password" formControlName="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login(formLogin.value)">Entrar</button>
     </form>
     <div class="container text-center p-lg-5">
         <span>¿No tienes cuenta? </span>
