@@ -21,6 +21,7 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 
 import { ToastrModule } from 'ngx-toastr';
+import { ImagepostComponent } from './components/imagepost/imagepost.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ToastrModule } from 'ngx-toastr';
     SettingsComponent,
     LogoutComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ImagepostComponent
   ],
   imports: [
     BrowserModule,

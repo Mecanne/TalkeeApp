@@ -4,6 +4,7 @@ import { LoginModel } from '../../models/login-model';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { VirtualTimeScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +17,14 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.formLogin = this.fb.group({
-      email: '',
-      password: ''
-    });
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['home']);
+    } else {
+      this.formLogin = this.fb.group({
+        email: '',
+        password: ''
+      });
+    }
   }
 
   login(formValue: any) {
