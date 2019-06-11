@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  posts: any[] = [{UserName: 'Name', Content: 'Content'}, {UserName: 'Name', Content: 'Content'}, {UserName: 'Name', Content: 'Content'}];
-
   constructor() { }
 
   ngOnInit() {

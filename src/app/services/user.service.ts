@@ -28,12 +28,8 @@ export class UserService {
     this.http.delete(environment.API_URL + 'user/delete');
   }
 
-  getUserByEmail(email: string) {
-    this.http.get<string>(environment.API_URL + 'User/' + email)
-      .subscribe(resp => {
-        return resp;
-      }, error => {
-        console.log(error);
-      });
+  getUser() {
+    return JSON.parse(window.localStorage.getItem('user'));
   }
+
 }

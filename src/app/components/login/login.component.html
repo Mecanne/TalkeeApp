@@ -17,7 +17,8 @@
             </div>
             <input type="password" formControlName="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login(formLogin.value)">Entrar</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" *ngIf="formLogin.valid" (click)="login(formLogin.value)">Entrar</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" *ngIf="formLogin.invalid" disabled>Entrar</button>
     </form>
     <div class="container text-center p-lg-5">
         <span>¿No tienes cuenta? </span>

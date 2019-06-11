@@ -3,6 +3,9 @@
     <h1 class="h3 mt-3 jumbotron p-2 text-center bg-transparent text-light">Configuración del perfil</h1>
 
     <div class="row">
+        <!--
+            MENU
+        -->
         <div class="col-md-5 col-xl-4">
 
             <div class="card">
@@ -12,23 +15,31 @@
 
                 <div class="list-group list-group-flush" role="tablist">
                     <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account" role="tab">
-                      Datos del perfil
+                        Datos del perfil
+                    </a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#pic" role="tab">
+                        Foto de perfil
                     </a>
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="#email" role="tab">
-                      Email
+                        Email
                     </a>
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="#password" role="tab">
-                      Contraseña
+                        Contraseña
                     </a>
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="#delete-account" role="tab">
-                      Eliminar cuenta
+                        Eliminar cuenta
                     </a>
                 </div>
             </div>
         </div>
+        <!--
+            /MENU
+        -->
+        <!-- AJUSTES -->
 
         <div class="col-md-7 col-xl-8">
             <div class="tab-content">
+                <!-- CUENTA -->
                 <div class="tab-pane fade show active" id="account" role="tabpanel">
 
                     <div class="card">
@@ -38,7 +49,7 @@
                         <div class="card-body">
                             <form>
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="inputUsername">Nombre de usuario</label>
                                             <input type="text" class="form-control" id="inputUsername" placeholder="Username">
@@ -48,37 +59,51 @@
                                             <textarea rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="text-center">
-                                            <img alt="Andrew Jones" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle img-responsive mt-2" width="128" height="128">
-                                            <div class="mt-2">
-                                                <input type="file" name="" id="">
-                                            </div>
-                                            <small>For best results, use an image at least 128px by 128px in .jpg format</small>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
                             </form>
-
                         </div>
+
                     </div>
 
                 </div>
+
+                <!-- FOTO -->
+                <div class="tab-pane fane" id="pic" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Foto del perfil</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 mb-2">
+                                    <div class="text-center">
+                                        <img alt="Andrew Jones" src="https://picsum.photos/100" class="rounded-circle img-responsive mt-2" width="128" height="128">
+                                    </div>
+                                </div>
+                            </div>
+                            <app-upload-image></app-upload-image>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EMAIL -->
                 <div class="tab-pane fade" id="email" role="tabpanel">
                     <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Email</h5>
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Email</h5>
 
                             <form>
                                 <div class="form-group">
-                                    <label for="inputPasswordCurrent">Nuevo email</label>
-                                    <input type="password" class="form-control" id="inputPasswordCurrent">
+                                    <label for="inputPassCurrent">Nuevo email</label>
+                                    <input type="password" class="form-control" id="inputPassCurrent">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPasswordNew">Contraseña</label>
-                                    <input type="password" class="form-control" id="inputPasswordNew">
+                                    <label for="inputPassword">Contraseña</label>
+                                    <input type="password" class="form-control" id="inputPassword">
                                     <small><a href="#">Forgot your password?</a></small>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
@@ -87,10 +112,14 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- CONTRASEÑA -->
                 <div class="tab-pane fade" id="password" role="tabpanel">
                     <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Cambio de contraseña</h5>
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Password</h5>
 
                             <form>
                                 <div class="form-group">
@@ -103,8 +132,8 @@
                                     <input type="password" class="form-control" id="inputPasswordNew">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPasswordNew2">Confirmar nueva contraseña</label>
-                                    <input type="password" class="form-control" id="inputPasswordNew2">
+                                    <label for="inputPasswordNewConfirm">Confirmar nueva contraseña</label>
+                                    <input type="password" class="form-control" id="inputPasswordNewConfirm">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
                             </form>
@@ -112,15 +141,19 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- BORRAR CUENTA -->
                 <div class="tab-pane fade" id="delete-account" role="tabpanel">
                     <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Eliminar cuenta de usuario</h5>
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Eliminar cuenta de usuario</h5>
 
                             <form>
                                 <div class="form-group">
-                                    <label for="inputPasswordCurrent">Contraseña</label>
-                                    <input type="password" class="form-control" id="inputPasswordCurrent">
+                                    <label for="inputCurrentPass">Contraseña</label>
+                                    <input type="password" class="form-control" id="inputCurrentPass">
                                     <small><a href="#">Forgot your password?</a></small>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Borrar cuenta</button>

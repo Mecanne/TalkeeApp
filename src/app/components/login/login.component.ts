@@ -19,12 +19,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['home']);
-    } else {
-      this.formLogin = this.fb.group({
-        email: ['', Validators.email],
-        password: ''
-      });
     }
+
+    this.formLogin = this.fb.group({
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
   }
 
   login(formValue: any) {

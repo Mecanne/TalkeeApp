@@ -10,6 +10,7 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class AuthService implements CanActivate {
+// tslint:disable-next-line: max-line-length
   canActivate(route: import('@angular/router').ActivatedRouteSnapshot, state: import('@angular/router').RouterStateSnapshot): boolean | import('@angular/router').UrlTree | import('rxjs').Observable<boolean | import('@angular/router').UrlTree> | Promise<boolean | import('@angular/router').UrlTree> {
     return this.isAuthenticated();
   }
@@ -20,9 +21,10 @@ export class AuthService implements CanActivate {
     this.http.post(environment.API_URL + 'auth/login', login)
       .subscribe(resp => {
         const token = (resp as any).token;
+        const userlog = (resp as any).userlog;
         window.localStorage.setItem('jwt', token);
-        const user = this.userService.getUserByEmail(login.email) as any;
-        window.localStorage.setItem('user', user);
+        window.localStorage.setItem('user', userlog);
+        console.log(userlog);
         this.router.navigate(['home']);
         this.toastr.success('Login successful!');
       }, error => {

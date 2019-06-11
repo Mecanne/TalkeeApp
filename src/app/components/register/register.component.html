@@ -10,7 +10,9 @@
             </div>
             <input type="email" formControlName="email" class="form-control" placeholder="Correo electrónico" required autofocus>
         </div>
-        <small *ngIf="formRegister.get('email').invalid">Email invalido</small>
+        <div *ngIf="formRegister.get('email').touched && formRegister.get('email').dirty">
+            <small *ngIf="formRegister.get('email').invalid">Email invalido</small>
+        </div>
         <label for="inputPassword" class="sr-only">Contraseña</label>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -25,7 +27,8 @@
             </div>
             <input type="password" formControlName="passwordConfirm" class="form-control" placeholder="Confirmar contraseña" required>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="log(formRegister)">Registrar</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="register(formRegister.value)" *ngIf="formRegister.valid">Registrar</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" *ngIf="formRegister.invalid" disabled>Registrar</button>
     </form>
     <div class="container text-center p-lg-5">
         <span>¿Ya tienes cuenta? </span>
