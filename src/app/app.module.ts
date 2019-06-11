@@ -21,6 +21,7 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 
 import { ToastrModule } from 'ngx-toastr';
+import { PostService } from './services/post.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [
     AuthService,
-    UserService
+    UserService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })

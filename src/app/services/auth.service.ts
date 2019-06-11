@@ -26,9 +26,9 @@ export class AuthService implements CanActivate {
         window.localStorage.setItem('user', userlog);
         console.log(userlog);
         this.router.navigate(['home']);
-        this.toastr.success('Login successful!');
+        this.toastr.success('¡Incio de sesión correcto!');
       }, error => {
-        this.toastr.error('Login failed!');
+        this.toastr.error('¡Error al iniciar sesión!');
       });
   }
 

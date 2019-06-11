@@ -12,6 +12,7 @@ export class PostComponent implements OnInit {
   @Input() Content: string;
   @Input() Url: string;
   @Input() type: string;
+  @Input() date: Date;
 
   formTexto: FormGroup;
   formImagen: FormGroup;

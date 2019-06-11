@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       register.passwordConfirm = formValue.passwordConfirm;
       this.userService.register(register);
     } else {
-      this.toastr.error('Password must match!');
+      this.toastr.error('¡Las contraseñas deben coincidir!');
     }
   }
 
