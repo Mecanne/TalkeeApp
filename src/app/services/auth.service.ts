@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { Router, CanActivate } from '@angular/router';
 import { UserService } from './user.service';
+import { UserModel } from '../models/user-model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,11 @@ export class AuthService implements CanActivate {
     this.http.post(environment.API_URL + 'auth/login', login)
       .subscribe(resp => {
         const token = (resp as any).token;
-        const userlog = (resp as any).userlog;
+        const userlog = (resp as any).userlog as UserModel;
         window.localStorage.setItem('jwt', token);
-        window.localStorage.setItem('user', userlog);
-        console.log(userlog);
+        //const userID = this.userService.getUser(userlog.UserID);
+        window.localStorage.setItem('user', JSON.parse(JSON.stringify(userlog)));
+        console.log(window.localStorage.getItem('user'));
         this.router.navigate(['home']);
         this.toastr.success('¡Incio de sesión correcto!');
       }, error => {

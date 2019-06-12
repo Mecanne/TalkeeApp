@@ -14,11 +14,12 @@ export class PostService {
 
   constructor(private http: HttpClient, private toastr: ToastrService, private userService: UserService, private router: Router) { }
 
-  getAllPost(userid: number) {
+  getAllPost(userid: any) {
     return this.http.get('http://localhost:55535/api/Post/getall?UserID=' + userid);
   }
 
   makePost(post: PostModel) {
     return this.http.post(environment.API_URL + 'Post', post);
   }
+
 }

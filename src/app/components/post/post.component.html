@@ -2,8 +2,9 @@
     <img src="https://picsum.photos/50" class="mr-3 rounded" alt="...">
     <div class="media-body">
         <h5 class="mt-0">{{ UserName }}</h5>
-        <small>{{ date }}</small>
+        <hr class="p-0 m-0">
         <img src="https://picsum.photos/600" class="w-100 d-block mx-auto" alt="Imagen" width="100%" *ngIf="this.type == 'imagen'">
-        <p>{{ Content }}</p>
+        <p class="p-0 m-0">{{ Content }}</p>
+        <small>{{ date }}</small>
     </div>
 </div>

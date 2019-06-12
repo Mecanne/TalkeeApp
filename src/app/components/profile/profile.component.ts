@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { PostModel } from 'src/app/models/post-model';
 import { PostService } from '../../services/post.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserModel } from 'src/app/models/user-model';
 
 
 @Component({
@@ -26,8 +27,7 @@ export class ProfileComponent implements OnInit {
   posts =  [];
 
   ngOnInit() {
-    this.user = this.userService.getUser();
-
+    this.user = this.userService.getLocalUser();
     this.getAllUserPosts();
   }
 
@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
 
   createPost(formValue: { texto: string; }) {
     const post = new PostModel();
-    post.UserID = this.userService.getUser().UserID;
+    post.UserID = this.userService.getLocalUser().UserID;
     post.Content = formValue.texto;
     post.Date = new Date();
     post.type = 'text';

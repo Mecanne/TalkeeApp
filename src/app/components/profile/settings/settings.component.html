@@ -52,7 +52,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="inputUsername">Nombre de usuario</label>
-                                            <input type="text" class="form-control" formControlName="username" placeholder="Nombre de usuario">
+                                            <input type="text" class="form-control" formControlName="userName" placeholder="Nombre de usuario">
                                         </div>
                                         <div class="form-group">
                                             <label for="inputUsername">Descripción</label>
@@ -60,8 +60,8 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formDatos.valid" (click)="modifyUserData(formDatos.value)">Guardar cambios</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formDatos.invalid" disabled>Guardar cambios</button>
                             </form>
                         </div>
 
@@ -95,17 +95,17 @@
                         </div>
                         <div class="card-body">
 
-                            <form>
+                            <form [formGroup]="formEmail">
                                 <div class="form-group">
                                     <label for="inputPassCurrent">Nuevo email</label>
-                                    <input type="password" class="form-control" id="inputPassCurrent">
+                                    <input type="password" class="form-control" formControlName="newEmail">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword">Contraseña</label>
-                                    <input type="password" class="form-control" id="inputPassword">
-                                    <small><a href="#">Forgot your password?</a></small>
+                                    <input type="password" class="form-control" formControlName="password">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formEmail.valid">Guardar cambios</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formEmail.invalid" disabled>Guardar cambios</button>
                             </form>
 
                         </div>
@@ -120,21 +120,21 @@
                         </div>
                         <div class="card-body">
 
-                            <form>
+                            <form [formGroup]="formContrasenna">
                                 <div class="form-group">
                                     <label for="inputPasswordCurrent">Contraseña actual</label>
-                                    <input type="password" class="form-control" id="inputPasswordCurrent">
-                                    <small><a href="#">Forgot your password?</a></small>
+                                    <input type="password" class="form-control" formControlName="currentPassword">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPasswordNew">Nueva contraseña</label>
-                                    <input type="password" class="form-control" id="inputPasswordNew">
+                                    <input type="password" class="form-control" formControlName="newPassword">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPasswordNewConfirm">Confirmar nueva contraseña</label>
-                                    <input type="password" class="form-control" id="inputPasswordNewConfirm">
+                                    <input type="password" class="form-control" formControlName="newPasswordConfirm">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formContrasenna.valid">Guardar cambios</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formContrasenna.invalid" disabled>Guardar cambios</button>
                             </form>
 
                         </div>
@@ -149,13 +149,13 @@
                         </div>
                         <div class="card-body">
 
-                            <form>
+                            <form [formGroup]="formEliminar">
                                 <div class="form-group">
                                     <label for="inputCurrentPass">Contraseña</label>
-                                    <input type="password" class="form-control" id="inputCurrentPass">
-                                    <small><a href="#">Forgot your password?</a></small>
+                                    <input type="password" class="form-control" formControlName="password">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Borrar cuenta</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formEliminar.valid">Borrar cuenta</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formEliminar.invalid" disabled>Borrar cuenta</button>
                             </form>
 
                         </div>

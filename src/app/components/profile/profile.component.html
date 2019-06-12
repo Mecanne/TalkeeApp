@@ -26,7 +26,6 @@
         </div>
     </div>
     <div class="col-md-8 gedf-main">
-
         <!--- \\\\\\\Post-->
         <div class="card gedf-card">
             <div class="card-header">
@@ -47,7 +46,6 @@
                                 <label class="sr-only" for="message">post</label>
                                 <textarea class="form-control" formControlName="texto" rows="3" placeholder="¿Qué estás pensando?"></textarea>
                             </div>
-
                             <div class="btn-toolbar justify-content-between">
                                 <div class="btn-group">
                                     <button type="submit" class="btn btn-primary btn-block" (click)="createPost(formPost.value)">Compartir</button>
@@ -70,7 +68,7 @@
 
                         <div class="btn-toolbar justify-content-between">
                             <div class="btn-group">
-                                <button type="submit" class="btn btn-primary btn-block">Compartir</button>
+                                <button type="submit" class="btn btn-primary btn-block" disabled>Compartir</button>
                             </div>
                         </div>
                     </div>
@@ -78,13 +76,22 @@
             </div>
         </div>
         <!-- Post /////-->
-        <cdk-virtual-scroll-viewport style="height: 500px" itemSize="90">
-            <div *cdkVirtualFor="let post of posts">
-
+        <ng-container *ngIf="posts;else elseTemplate">
+            <div *ngFor="let post of posts">
                 <app-post [UserName]="user.UserName" [Content]="post.content" [type]="post.type" [date]="post.date">
                 </app-post>
             </div>
-        </cdk-virtual-scroll-viewport>
+        </ng-container>
+        <ng-template #elseTemplate>
+            <div>
+                <h4 class="text-center">No hay posts disponibles</h4>
+                <h4 class="text-center">¡Crea tu primer post arriba!</h4>
+            </div>
+        </ng-template>
+
+
+
+
 
 
     </div>

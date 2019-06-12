@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
 
   createPost(formValue: { texto: string; }) {
     const post = new PostModel();
-    post.UserID = this.userService.getUser().UserID;
+    post.UserID = this.userService.getLocalUser().UserID;
     post.Content = formValue.texto;
     post.Date = new Date();
     post.type = 'text';

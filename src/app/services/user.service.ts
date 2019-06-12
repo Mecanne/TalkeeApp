@@ -24,12 +24,34 @@ export class UserService {
       });
   }
 
-  deleteUser(user: UserModel) {
-    this.http.delete(environment.API_URL + 'user/delete');
+  modifyUser(user: UserModel) {
+    const currentUser = this.getLocalUser();
+    return this.http.put(environment.API_URL + 'User/' + currentUser.UserID, user);
   }
 
-  getUser() {
-    return JSON.parse(window.localStorage.getItem('user'));
+  deleteUser(user: UserModel) {
+    return this.http.delete(environment.API_URL + 'user/delete');
+  }
+
+  getUserID() {
+    return window.localStorage.getItem('userid');
+  }
+
+  getUser(id) {
+    this.http.get(environment.API_URL + 'User/' + id)
+      .subscribe(resp => {
+        return resp;
+      },error => {
+        console.log(error);
+      });
+  }
+
+  getLocalUser() {
+    return JSON.parse(JSON.parse(window.localStorage.getItem('user')));
+  }
+
+  setLocalUser(user: UserModel) {
+    window.localStorage.setItem('user', JSON.stringify(user));
   }
 
 }
