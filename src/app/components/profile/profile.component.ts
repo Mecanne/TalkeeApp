@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { PostModel } from 'src/app/models/post-model';
@@ -48,6 +48,9 @@ export class ProfileComponent implements OnInit {
     post.Date = new Date();
     post.type = 'text';
     post.likes = 0;
+    this.formPost = this.fb.group({
+      texto: new FormControl('')
+    });
     this.postService.makePost(post).subscribe(resp => {
       this.toastr.success('¡Post creado!');
       this.getAllUserPosts();

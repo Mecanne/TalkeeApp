@@ -20,7 +20,8 @@
                     <div class="h5">0</div>
                 </li>
                 <li class="list-group-item">
-                    <a class="nav-link dropdown-item" [routerLink]="[ '/settings' ]" routerLinkActive="active"><i class="fas fa-cog"></i> Configuracion del perfil</a></li>
+                    <a class="nav-link dropdown-item" [routerLink]="[ '/settings' ]" routerLinkActive="active"><i
+                            class="fas fa-cog"></i> Configuracion del perfil</a></li>
             </ul>
         </div>
     </div>
@@ -77,9 +78,14 @@
             </div>
         </div>
         <!-- Post /////-->
-        <div *ngFor="let post of posts">
-            <app-post [UserName]="user.UserName" [Content]="post.content" [type]="post.type" [date]="post.date"></app-post>
-        </div>
+        <cdk-virtual-scroll-viewport style="height: 500px" itemSize="90">
+            <div *cdkVirtualFor="let post of posts">
+
+                <app-post [UserName]="user.UserName" [Content]="post.content" [type]="post.type" [date]="post.date">
+                </app-post>
+            </div>
+        </cdk-virtual-scroll-viewport>
+
 
     </div>
 </div>
