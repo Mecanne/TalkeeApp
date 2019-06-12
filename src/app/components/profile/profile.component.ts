@@ -3,6 +3,8 @@ import { UserService } from 'src/app/services/user.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { PostModel } from 'src/app/models/post-model';
 import { PostService } from '../../services/post.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-profile',
@@ -13,19 +15,30 @@ export class ProfileComponent implements OnInit {
 
   formPost: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private postService: PostService) { }
+// tslint:disable-next-line: max-line-length
+  constructor(private fb: FormBuilder, private userService: UserService, private postService: PostService, private toastr: ToastrService) {
+    this.formPost = this.fb.group({
+      texto: new FormControl('')
+    });
+  }
 
   user: any;
-  posts: any;
+  posts =  [];
 
   ngOnInit() {
     this.user = this.userService.getUser();
 
-    this.posts = this.postService.getAllPost(this.user.UserID);
+    this.getAllUserPosts();
+  }
 
-    this.formPost = this.fb.group({
-      texto: new FormControl('')
-    });
+  getAllUserPosts() {
+    this.postService.getAllPost(this.user.UserID)
+      .subscribe((resp: any) => {
+        this.posts = resp && resp.length ? resp.map(r => r as PostModel) : [];
+        this.posts.map(post => {
+          post.date = new Date(post.date).toLocaleString();
+        });
+      });
   }
 
   createPost(formValue: { texto: string; }) {
@@ -35,7 +48,13 @@ export class ProfileComponent implements OnInit {
     post.Date = new Date();
     post.type = 'text';
     post.likes = 0;
-    this.postService.makePost(post);
+    this.postService.makePost(post).subscribe(resp => {
+      this.toastr.success('¡Post creado!');
+      this.getAllUserPosts();
+    }, error => {
+      this.toastr.error('Error al crear el post');
+    });
+
   }
 
 }

@@ -9,6 +9,7 @@ import { FeedComponent } from './components/feed/feed.component';
 import { SearchComponent } from './components/search/search.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AuthService } from './services/auth.service';
+import { RefreshComponent } from './components/refresh/refresh.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: [AuthService] },
   { path: 'feed', component: FeedComponent, canActivate: [AuthService] },
   { path: 'search/:{string}', component: SearchComponent, canActivate: [AuthService] },
+  { path: 'refresh', component: RefreshComponent, canActivate: [AuthService]},
   { path: '**', redirectTo: '/login' }
 ];
 

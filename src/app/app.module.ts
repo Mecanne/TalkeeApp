@@ -22,6 +22,8 @@ import { UserService } from './services/user.service';
 
 import { ToastrModule } from 'ngx-toastr';
 import { PostService } from './services/post.service';
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import { RefreshComponent } from './components/refresh/refresh.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { PostService } from './services/post.service';
     SettingsComponent,
     LogoutComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    UploadImageComponent,
+    RefreshComponent
   ],
   imports: [
     BrowserModule,

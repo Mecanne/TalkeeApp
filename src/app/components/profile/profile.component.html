@@ -77,11 +77,9 @@
             </div>
         </div>
         <!-- Post /////-->
-
-        <ng-component *ngFor="let post of this.posts">
-            <app-post [UserName]="user.UserName" [Content]="post.Content" [type]="post.type" [date]="post.date"></app-post>
-        </ng-component>
-
+        <div *ngFor="let post of posts">
+            <app-post [UserName]="user.UserName" [Content]="post.content" [type]="post.type" [date]="post.date"></app-post>
+        </div>
 
     </div>
 </div>

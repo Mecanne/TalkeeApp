@@ -14,21 +14,11 @@ export class PostService {
 
   constructor(private http: HttpClient, private toastr: ToastrService, private userService: UserService, private router: Router) { }
 
-  getAllPost(userid: number): Observable<PostModel[]> {
-    this.http.get('http://localhost:55535/api/Post/getall?UserID=' + userid).pipe()
-      
-    )
+  getAllPost(userid: number) {
+    return this.http.get('http://localhost:55535/api/Post/getall?UserID=' + userid);
   }
 
   makePost(post: PostModel) {
-    this.http.post(environment.API_URL + 'Post', post)
-      .subscribe(resp => {
-        console.log(resp);
-        this.toastr.success('¡Post creado!');
-        this.router.navigate(['home']);
-      }, error => {
-        console.log(error);
-        this.toastr.error('Error al crear el post');
-      });
+    return this.http.post(environment.API_URL + 'Post', post);
   }
 }

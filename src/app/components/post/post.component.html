@@ -1,9 +1,8 @@
-<div class="media bg-light p-3 rounded">
+<div class="media bg-light p-3 rounded mb-2">
     <img src="https://picsum.photos/50" class="mr-3 rounded" alt="...">
     <div class="media-body">
         <h5 class="mt-0">{{ UserName }}</h5>
         <small>{{ date }}</small>
-        <hr>
         <img src="https://picsum.photos/600" class="w-100 d-block mx-auto" alt="Imagen" width="100%" *ngIf="this.type == 'imagen'">
         <p>{{ Content }}</p>
     </div>
