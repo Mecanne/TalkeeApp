@@ -22,11 +22,10 @@ export class AuthService implements CanActivate {
     this.http.post(environment.API_URL + 'auth/login', login)
       .subscribe(resp => {
         const token = (resp as any).token;
-        const userlog = (resp as any).userlog as UserModel;
+        let userlog = (resp as any).userlog;
         window.localStorage.setItem('jwt', token);
-        //const userID = this.userService.getUser(userlog.UserID);
-        window.localStorage.setItem('user', JSON.parse(JSON.stringify(userlog)));
-        console.log(window.localStorage.getItem('user'));
+        userlog = JSON.parse(userlog) as UserModel;
+        this.userService.setLocalUser(userlog);
         this.router.navigate(['home']);
         this.toastr.success('¡Incio de sesión correcto!');
       }, error => {

@@ -41,13 +41,13 @@ export class UserService {
     this.http.get(environment.API_URL + 'User/' + id)
       .subscribe(resp => {
         return resp;
-      },error => {
+      }, error => {
         console.log(error);
       });
   }
 
   getLocalUser() {
-    return JSON.parse(JSON.parse(window.localStorage.getItem('user')));
+    return JSON.parse(window.localStorage.getItem('user'));
   }
 
   setLocalUser(user: UserModel) {

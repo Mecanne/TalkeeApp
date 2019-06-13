@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private userService: UserService, private fb: FormBuilder,private toastr: ToastrService) { }
+  constructor(private userService: UserService, private fb: FormBuilder, private toastr: ToastrService) { }
 
   user: any;
   formDatos: FormGroup;
@@ -23,7 +23,7 @@ export class SettingsComponent implements OnInit {
     this.user = this.userService.getLocalUser();
 
     this.formDatos = this.fb.group({
-      userName: new FormControl(this.user.UserName,[Validators.required]),
+      userName: new FormControl(this.user.UserName, [Validators.required]),
       description: new FormControl(this.user.Description, [Validators.required])
     });
 
@@ -47,10 +47,10 @@ export class SettingsComponent implements OnInit {
     const user = this.user;
     user.UserName = formValue.userName;
     user.Description = formValue.description;
-    console.log(user);
     this.userService.modifyUser(user)
       .subscribe(resp => {
         this.toastr.success('Usuario modificado correctamente');
+        this.userService.setLocalUser(user);
         this.user = this.userService.getLocalUser();
       }, error => {
         console.log(error);
@@ -59,7 +59,7 @@ export class SettingsComponent implements OnInit {
   }
 
   modifyUserPassword(formValue: any) {
-    
+
   }
 
   modifyUserEmail(formValue: any) {
