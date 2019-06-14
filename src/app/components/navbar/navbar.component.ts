@@ -12,16 +12,12 @@ export class NavbarComponent implements OnInit {
   formBusqueda: FormGroup;
   query: string;
 
-  constructor(private fb: FormBuilder,private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.formBusqueda = this.fb.group({
       query: new FormControl('', [Validators.required, Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')])
     });
-  }
-
-  search(formValue: any) {
-    this.router.navigate(['refreshsearch/' + encodeURI(formValue.query)]);
   }
 
 }
