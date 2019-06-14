@@ -47,6 +47,7 @@ export class UserService {
   }
 
   getLocalUser() {
+    console.log(JSON.parse(window.localStorage.getItem('user')));
     return JSON.parse(window.localStorage.getItem('user'));
   }
 

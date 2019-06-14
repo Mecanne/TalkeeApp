@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthService] },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthService] },
   { path: 'feed', component: FeedComponent, canActivate: [AuthService] },
-  { path: 'search/:{string}', component: SearchComponent, canActivate: [AuthService] },
+  { path: 'search/:query', component: SearchComponent, canActivate: [AuthService] },
   { path: 'refresh', component: RefreshComponent, canActivate: [AuthService]},
   { path: '**', redirectTo: '/login' }
 ];

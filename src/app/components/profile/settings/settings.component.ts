@@ -3,6 +3,8 @@ import { UserService } from 'src/app/services/user.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserModel } from '../../../models/user-model';
 import { ToastrService } from 'ngx-toastr';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { SecurityContext } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-settings',
@@ -11,8 +13,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private userService: UserService, private fb: FormBuilder, private toastr: ToastrService) { }
+  constructor(private userService: UserService, private fb: FormBuilder, private toastr: ToastrService, private sanitizer: DomSanitizer) { }
 
+  url: string;
+  imgurl: SafeUrl;
   user: any;
   formDatos: FormGroup;
   formEmail: FormGroup;
@@ -21,6 +25,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.userService.getLocalUser();
+    this.url = this.user.urlImagen;
 
     this.formDatos = this.fb.group({
       userName: new FormControl(this.user.UserName, [Validators.required]),
@@ -59,15 +64,19 @@ export class SettingsComponent implements OnInit {
   }
 
   modifyUserPassword(formValue: any) {
-
+    console.log(formValue);
   }
 
   modifyUserEmail(formValue: any) {
-
+    console.log(formValue);
   }
 
   deleteAccount(formValue: any) {
+    console.log(formValue);
+  }
 
+  actualizarUrl(url: string) {
+    this.imgurl = this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
 }

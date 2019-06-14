@@ -22,7 +22,6 @@ import { UserService } from './services/user.service';
 
 import { ToastrModule } from 'ngx-toastr';
 import { PostService } from './services/post.service';
-import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { RefreshComponent } from './components/refresh/refresh.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -41,7 +40,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     LogoutComponent,
     FooterComponent,
     NavbarComponent,
-    UploadImageComponent,
     RefreshComponent
   ],
   imports: [
