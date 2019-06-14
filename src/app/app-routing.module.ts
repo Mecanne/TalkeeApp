@@ -9,7 +9,10 @@ import { FeedComponent } from './components/feed/feed.component';
 import { SearchComponent } from './components/search/search.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AuthService } from './services/auth.service';
-import { RefreshComponent } from './components/refresh/refresh.component';
+import { ViewProfileComponent } from './components/view-profile/view-profile.component';
+import { FollowsComponent } from './components/follows/follows.component';
+import { FollowersComponent } from './components/followers/followers.component';
+import { RefreshSearchComponent } from './components/refresh-search/refresh-search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -18,10 +21,13 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthService]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthService] },
+  { path: 'profile/:id', component: ViewProfileComponent, canActivate: [AuthService] },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthService] },
   { path: 'feed', component: FeedComponent, canActivate: [AuthService] },
+  { path: 'followers/:id', component: FollowersComponent, canActivate: [AuthService] },
+  { path: 'follows/:id', component: FollowsComponent, canActivate: [AuthService] },
+  { path: 'refreshsearch/:query', component: RefreshSearchComponent, canActivate: [AuthService] },
   { path: 'search/:query', component: SearchComponent, canActivate: [AuthService] },
-  { path: 'refresh', component: RefreshComponent, canActivate: [AuthService]},
   { path: '**', redirectTo: '/login' }
 ];
 

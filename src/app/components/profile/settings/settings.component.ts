@@ -52,6 +52,9 @@ export class SettingsComponent implements OnInit {
     const user = this.user;
     user.UserName = formValue.userName;
     user.Description = formValue.description;
+    this.modifyUser(user);
+  }
+  modifyUser(user: UserModel) {
     this.userService.modifyUser(user)
       .subscribe(resp => {
         this.toastr.success('Usuario modificado correctamente');

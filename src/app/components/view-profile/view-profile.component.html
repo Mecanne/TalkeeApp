@@ -1,0 +1,42 @@
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card border-0">
+            <div class="card-head p-0">
+                <img src="{{ user.urlImagen}}" alt="Foto de perfil" width="100%" class="">
+            </div>
+
+            <div class="card-body">
+                <div class="h5" *ngIf="user.userName">{{ user.userName }}</div>
+                <div class="h5" *ngIf="!user.userName">Anonymous</div>
+                <div class="h7" *ngIf="user.description">{{ user.description }}</div>
+                <div class="h7" *ngIf="!user.description">Descripción de Anonymous</div>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="h6 text-muted">Seguidores</div>
+                    <div class="h5">0</div>
+                </li>
+                <li class="list-group-item">
+                    <div class="h6 text-muted">Seguidos</div>
+                    <div class="h5">0</div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="col-md-8 gedf-main">
+
+        <ng-container *ngIf="posts.length;else elseTemplate">
+            <div *ngFor="let post of posts">
+                <app-post [UserName]="user.userName" [Content]="post.content" [type]="post.type" [date]="post.date" [Url]="user.urlImagen">
+                </app-post>
+            </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+            <div>
+                <h4 class="text-center">No hay posts disponibles</h4>
+            </div>
+        </ng-template>
+
+    </div>
+</div>

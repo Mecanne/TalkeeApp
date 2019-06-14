@@ -56,6 +56,7 @@ export class ProfileComponent implements OnInit {
       this.getAllUserPosts();
     }, error => {
       this.toastr.error('Error al crear el post');
+      console.log(error);
     });
 
   }

@@ -22,9 +22,13 @@ import { UserService } from './services/user.service';
 
 import { ToastrModule } from 'ngx-toastr';
 import { PostService } from './services/post.service';
-import { RefreshComponent } from './components/refresh/refresh.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ViewProfileComponent } from './components/view-profile/view-profile.component';
+import { FollowersComponent } from './components/followers/followers.component';
+import { FollowsComponent } from './components/follows/follows.component';
+import { RefreshSearchComponent } from './components/refresh-search/refresh-search.component';
+import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     LogoutComponent,
     FooterComponent,
     NavbarComponent,
-    RefreshComponent
+    ViewProfileComponent,
+    FollowersComponent,
+    FollowsComponent,
+    RefreshSearchComponent,
+    ProfileCardComponent
   ],
   imports: [
     BrowserModule,

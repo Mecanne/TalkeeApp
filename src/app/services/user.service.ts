@@ -38,21 +38,29 @@ export class UserService {
   }
 
   getUser(id) {
-    this.http.get(environment.API_URL + 'User/' + id)
+    this.http.get(environment.API_URL + 'User/byid?id=' + id)
       .subscribe(resp => {
-        return resp;
+        console.log(resp);
+        return resp[0];
       }, error => {
         console.log(error);
       });
   }
 
+  getUserProfile(id) {
+    return this.http.get(environment.API_URL + 'User/byid?id=' + id);
+  }
+
   getLocalUser() {
-    console.log(JSON.parse(window.localStorage.getItem('user')));
     return JSON.parse(window.localStorage.getItem('user'));
   }
 
   setLocalUser(user: UserModel) {
     window.localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  searchUsers(query: string) {
+    return this.http.get(environment.API_URL + 'User/search?q=' + query);
   }
 
 }

@@ -17,13 +17,14 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav mx-lg-auto">
-                    <form [formGroup]="" class="form-inline ml-lg-5">
+                    <form [formGroup]="formBusqueda" class="form-inline ml-lg-5">
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="statictext" class="sr-only">Text</label>
-                                <input type="text" class="form-control" id="staticText">
+                                <input type="text" class="form-control" formControlName="query" [(ngModel)]="query">
                                 <div class="input-group-append">
-                                    <button class="btn text-light bg-turquesa"><i class="fas fa-search"></i> Buscar</button>
+                                    <a class="btn text-light bg-turquesa" *ngIf="formBusqueda.valid" [routerLink]="['search', query]" routerLinkActive="router-link-active"><i class="fas fa-search"></i> Buscar</a>
+                                    <a class="btn text-light bg-turquesa" *ngIf="formBusqueda.invalid" disabled><i class="fas fa-search"></i> Buscar</a>
                                 </div>
                             </div>
                         </div>
