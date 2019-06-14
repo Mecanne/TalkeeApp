@@ -63,4 +63,12 @@ export class UserService {
     return this.http.get(environment.API_URL + 'User/search?q=' + query);
   }
 
+  getFollowers(id: any) {
+    
+  }
+
+  getFollows(id: any) {
+    
+  }
+
 }
