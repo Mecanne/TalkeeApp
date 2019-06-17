@@ -1,4 +1,5 @@
 export class Follows {
-    UserID: number;
     FollowID: number;
+    UserID: number;
+    FollowedID: number;
 }

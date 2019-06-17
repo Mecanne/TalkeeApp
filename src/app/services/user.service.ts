@@ -29,8 +29,8 @@ export class UserService {
     return this.http.put(environment.API_URL + 'User/' + currentUser.UserID, user);
   }
 
-  deleteUser(user: UserModel) {
-    return this.http.delete(environment.API_URL + 'user/delete');
+  deleteUser(id: any) {
+    return this.http.delete(environment.API_URL + 'User/delete/' + id);
   }
 
   getUserID() {
@@ -64,11 +64,15 @@ export class UserService {
   }
 
   getFollowers(id: any) {
-    
+    return this.http.get(environment.API_URL + 'Followers/' + id);
   }
 
   getFollows(id: any) {
-    
+    return this.http.get(environment.API_URL + 'Follows/' + id);
+  }
+
+  isFollowedByUser(id): any {
+    return this.http.get(environment.API_URL + 'Follower/isFollowedBy/' + id);
   }
 
 }

@@ -42,4 +42,12 @@ export class ViewProfileComponent implements OnInit {
       });
   }
 
+  follow(id: any) {
+
+  }
+
+  unfollow(id: any) {
+
+  }
+
 }
