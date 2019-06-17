@@ -22,6 +22,7 @@ export class SettingsComponent implements OnInit {
   formEmail: FormGroup;
   formContrasenna: FormGroup;
   formEliminar: FormGroup;
+  formUrl: FormGroup;
 
   ngOnInit() {
     this.user = this.userService.getLocalUser();
@@ -30,6 +31,10 @@ export class SettingsComponent implements OnInit {
     this.formDatos = this.fb.group({
       userName: new FormControl(this.user.UserName, [Validators.required]),
       description: new FormControl(this.user.Description, [Validators.required])
+    });
+
+    this.formUrl = this.fb.group({
+      url: new FormControl('', [Validators.required])
     });
 
     this.formEmail = this.fb.group({
@@ -54,7 +59,9 @@ export class SettingsComponent implements OnInit {
     user.Description = formValue.description;
     this.modifyUser(user);
   }
+
   modifyUser(user: UserModel) {
+    console.log(user);
     this.userService.modifyUser(user)
       .subscribe(resp => {
         this.toastr.success('Usuario modificado correctamente');
@@ -67,10 +74,46 @@ export class SettingsComponent implements OnInit {
   }
 
   modifyUserPassword(formValue: any) {
-    console.log(formValue);
+    const user = this.user;
+    if (formValue.currentPassword === user.Password) {
+      if (formValue.newPassword === formValue.newPasswordConfirm) {
+        user.Password = formValue.newPassword;
+        this.userService.modifyUser(user)
+        .subscribe(resp => {
+          this.toastr.success('Contraseña modificada correctamente');
+          this.userService.setLocalUser(user);
+          this.user = this.userService.getLocalUser();
+        }, error => {
+          console.log(error);
+          this.toastr.error('Error al modificar los datos del usuario');
+        });
+      } else {
+        this.toastr.error('¡Las contraseñas deben coincidir!');
+      }
+    } else {
+      this.toastr.error('¡La contraseña es incorrecta!');
+    }
   }
 
   modifyUserEmail(formValue: any) {
+    const user = this.user;
+    if (formValue.password === user.Password) {
+      user.Email = formValue.newEmail;
+      this.userService.modifyUser(user)
+      .subscribe(resp => {
+        this.toastr.success('Email modificado correctamente');
+        this.userService.setLocalUser(user);
+        this.user = this.userService.getLocalUser();
+      }, error => {
+        console.log(error);
+        this.toastr.error('Error al modificar los datos del usuario');
+      });
+    } else {
+      this.toastr.error('Contraseña incorrecta');
+    }
+  }
+
+  modifyImgurl(formValue: any) {
     console.log(formValue);
   }
 

@@ -55,7 +55,7 @@ export class UserService {
     return JSON.parse(window.localStorage.getItem('user'));
   }
 
-  setLocalUser(user: UserModel) {
+  setLocalUser(user: any) {
     window.localStorage.setItem('user', JSON.stringify(user));
   }
 

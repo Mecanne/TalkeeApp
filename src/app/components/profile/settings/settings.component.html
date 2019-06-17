@@ -76,17 +76,19 @@
                             <h5 class="card-title mb-0">Foto del perfil</h5>
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <div class="text-center">
-                                        <img alt="profilepic" [src]="url" class="rounded-circle img-responsive mt-2" width="200" height="200">
+                            <form [formGroup]="formUrl">
+                                <div class="row">
+                                    <div class="col-md-12 mb-2">
+                                        <div class="text-center">
+                                            <img alt="profilepic" [src]="url" class="rounded-circle img-responsive mt-2" width="200" height="200">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="input-group">
-                                <input class="form-control" type="text" [ngModel]="url" (ngModelChange)="actualizarUrl($event)">
-                                <button class="btn btn-primary input-group-append">Change</button>
-                            </div>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" [ngModel]="url" (ngModelChange)="actualizarUrl($event)" formControlName="url" (click)="modifyImgurl(formUrl.value)">
+                                    <button class="btn btn-primary input-group-append">Cambiar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -102,13 +104,13 @@
                             <form [formGroup]="formEmail">
                                 <div class="form-group">
                                     <label for="inputPassCurrent">Nuevo email</label>
-                                    <input type="password" class="form-control" formControlName="newEmail">
+                                    <input type="email" class="form-control" formControlName="newEmail">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword">Contraseña</label>
                                     <input type="password" class="form-control" formControlName="password">
                                 </div>
-                                <button type="submit" class="btn btn-primary" *ngIf="formEmail.valid">Guardar cambios</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formEmail.valid" (click)="modifyUserEmail(formEmail.value)">Guardar cambios</button>
                                 <button type="submit" class="btn btn-primary" *ngIf="formEmail.invalid" disabled>Guardar cambios</button>
                             </form>
 
@@ -137,7 +139,7 @@
                                     <label for="inputPasswordNewConfirm">Confirmar nueva contraseña</label>
                                     <input type="password" class="form-control" formControlName="newPasswordConfirm">
                                 </div>
-                                <button type="submit" class="btn btn-primary" *ngIf="formContrasenna.valid">Guardar cambios</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formContrasenna.valid" (click)="modifyUserPassword(formContrasenna.value)">Guardar cambios</button>
                                 <button type="submit" class="btn btn-primary" *ngIf="formContrasenna.invalid" disabled>Guardar cambios</button>
                             </form>
 
@@ -158,7 +160,7 @@
                                     <label for="inputCurrentPass">Contraseña</label>
                                     <input type="password" class="form-control" formControlName="password">
                                 </div>
-                                <button type="submit" class="btn btn-primary" *ngIf="formEliminar.valid">Borrar cuenta</button>
+                                <button type="submit" class="btn btn-primary" *ngIf="formEliminar.valid" (click)="deleteAccount(formEliminar.value)">Borrar cuenta</button>
                                 <button type="submit" class="btn btn-primary" *ngIf="formEliminar.invalid" disabled>Borrar cuenta</button>
                             </form>
 
