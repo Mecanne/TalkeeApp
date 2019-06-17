@@ -1,4 +1,6 @@
 <ng-container *ngIf="userlist.length; else elseTemplate">
+    <h3 class="jumbotron p-3 mt-3">Resultados de la busqueda:</h3>
+    <hr>
     <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
         <ng-container *ngFor="let user of userlist">
             <app-profile-card [url]="user.urlImagen" [name]="user.userName" [description]="user.description" [id]="user.userID"></app-profile-card>

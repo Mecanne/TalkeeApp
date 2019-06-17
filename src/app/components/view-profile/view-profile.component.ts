@@ -17,6 +17,7 @@ export class ViewProfileComponent implements OnInit {
   id: any;
   user: any;
   posts = [];
+  loggedUser: any;
 
   ngOnInit() {
     this.route.params.subscribe(param => {
@@ -28,6 +29,7 @@ export class ViewProfileComponent implements OnInit {
           this.getAllUserPosts();
         });
     });
+    this.loggedUser = this.userService.getLocalUser();
   }
 
   getAllUserPosts() {

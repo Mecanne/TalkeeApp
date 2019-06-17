@@ -6,10 +6,17 @@
             </div>
 
             <div class="card-body">
-                <div class="h5" *ngIf="user.userName">{{ user.userName }}</div>
-                <div class="h5" *ngIf="!user.userName">Anonymous</div>
-                <div class="h7" *ngIf="user.description">{{ user.description }}</div>
-                <div class="h7" *ngIf="!user.description">Descripción de Anonymous</div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="h5" *ngIf="user.userName">{{ user.userName }}</div>
+                        <div class="h5" *ngIf="!user.userName">Anonymous</div>
+                        <div class="h7" *ngIf="user.description">{{ user.description }}</div>
+                        <div class="h7" *ngIf="!user.description">Descripción de Anonymous</div>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-info" *ngIf="user.userName !== loggedUser.UserName"><i class="fas fa-plus"></i> Seguir</button>
+                    </div>
+                </div>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
