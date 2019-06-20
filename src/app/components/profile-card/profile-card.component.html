@@ -1,8 +1,10 @@
-<div class="card m-3 pt-0" style="width: 18rem;">
-    <img class="card-img-top mt-3" src="{{ url }}" alt="Profile Image" style="width: 100%;">
+<div class="card mt-3 border-0" style="width: 18rem;">
+    <div class="card-head p-0">
+        <img src="{{ url }}" alt="Sin foto de perfil" width="100%" class="">
+    </div>
     <div class="card-body">
-        <h5 class="card-title">{{ name }}</h5>
-        <p class="card-text">{{ description }}</p>
+        <div class="h5">{{ name }}</div>
+        <div class="h7">{{ description }}</div>
         <button class="btn btn-primary" (click)="verPerfil(id)">Ver perfil</button>
     </div>
 </div>

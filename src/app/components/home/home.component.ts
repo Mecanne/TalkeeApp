@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { PostModel } from '../../models/post-model';
 import { UserService } from '../../services/user.service';
 import { PostService } from '../../services/post.service';
+import { CompletePostModel } from 'src/app/models/complete-post-model';
 
 @Component({
   selector: 'app-home',
@@ -11,24 +10,28 @@ import { PostService } from '../../services/post.service';
 })
 export class HomeComponent implements OnInit {
 
-  formPost: FormGroup;
 
-  constructor(private fb: FormBuilder, private postService: PostService, private userService: UserService) { }
+
+  constructor(private postService: PostService, private userService: UserService) { }
+
+  callComplete: boolean;
+  posts: any;
 
   ngOnInit() {
-    this.formPost = this.fb.group({
-      texto: new FormControl('')
-    });
+    this.callComplete = false;
+    this.getAllPosts();
   }
 
-  createPost(formValue: { texto: string; }) {
-    const post = new PostModel();
-    post.UserID = this.userService.getLocalUser().UserID;
-    post.Content = formValue.texto;
-    post.Date = new Date();
-    post.type = 'text';
-    post.likes = 0;
-    this.postService.makePost(post);
+  getAllPosts() {
+    this.postService.getAllPosts()
+      .subscribe((resp: any) => {
+        this.posts = resp && resp.length ? resp.map(r => r as CompletePostModel) : [];
+        this.posts.map(post => {
+          post.date = new Date(post.date).toLocaleString();
+        });
+        this.callComplete = true;
+        console.log(this.posts);
+      });
   }
 
 }

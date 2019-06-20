@@ -85,8 +85,8 @@
                                     </div>
                                 </div>
                                 <div class="input-group">
-                                    <input class="form-control" type="text" [ngModel]="url" (ngModelChange)="actualizarUrl($event)" formControlName="url" (click)="modifyImgurl(formUrl.value)">
-                                    <button class="btn btn-primary input-group-append">Cambiar</button>
+                                    <input class="form-control" type="text" [ngModel]="url" formControlName="url" (blur)="actualizarImagen(formUrl.value)">
+                                    <button class="btn btn-primary input-group-append" (click)="modifyImgurl(formUrl.value)">Cambiar</button>
                                 </div>
                             </form>
                         </div>
@@ -160,8 +160,8 @@
                                     <label for="inputCurrentPass">Contraseña</label>
                                     <input type="password" class="form-control" formControlName="password">
                                 </div>
-                                <button type="submit" class="btn btn-primary" *ngIf="formEliminar.valid" (click)="deleteAccount(formEliminar.value)">Borrar cuenta</button>
-                                <button type="submit" class="btn btn-primary" *ngIf="formEliminar.invalid" disabled>Borrar cuenta</button>
+                                <button type="submit" class="btn btn-danger" *ngIf="formEliminar.valid" (click)="deleteAccount(formEliminar.value)">Borrar cuenta</button>
+                                <button type="submit" class="btn btn-danger" *ngIf="formEliminar.invalid" disabled>Borrar cuenta</button>
                             </form>
 
                         </div>

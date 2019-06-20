@@ -155,7 +155,7 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  actualizarUrl(url: string) {
-    this.imgurl = this.sanitizer.bypassSecurityTrustUrl(url);
+  actualizarImagen(formValue: any) {
+    this.url = formValue.url;
   }
 }

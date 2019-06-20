@@ -14,6 +14,10 @@ export class PostService {
 
   constructor(private http: HttpClient, private toastr: ToastrService, private userService: UserService, private router: Router) { }
 
+  getAllPosts() {
+    return this.http.get('http://localhost:55535/api/Post');
+  }
+
   getAllPost(userid: any) {
     return this.http.get('http://localhost:55535/api/Post/getall?UserID=' + userid);
   }

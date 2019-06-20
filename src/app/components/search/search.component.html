@@ -1,12 +1,18 @@
-<ng-container *ngIf="userlist.length; else elseTemplate">
-    <h3 class="jumbotron p-3 mt-3">Resultados de la busqueda:</h3>
-    <hr>
-    <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
-        <ng-container *ngFor="let user of userlist">
-            <app-profile-card [url]="user.urlImagen" [name]="user.userName" [description]="user.description" [id]="user.userID"></app-profile-card>
-        </ng-container>
-    </div>
+<ng-container *ngIf="searchComplete; else elseTemplate">
+    <ng-container *ngIf="userlist.length; else elseTemplate">
+        <h3 class="p-3 mt-3">Resultados de la busqueda:</h3>
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <ng-container *ngFor="let user of userlist">
+                <app-profile-card [url]="user.urlImagen" [name]="user.userName" [description]="user.description" [id]="user.userID"></app-profile-card>
+            </ng-container>
+        </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+        <h2 class="jumbotron text-center mt-5 w-50 mx-auto">No se han encontrado resultados</h2>
+    </ng-template>
 </ng-container>
 <ng-template #elseTemplate>
-    <h2 class="jumbotron text-center mt-5 w-50 mx-auto">No se han encontrado resultados</h2>
+    <div class="spinner-border text-primary d-block mx-auto mt-5" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
 </ng-template>

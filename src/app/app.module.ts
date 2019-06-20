@@ -29,6 +29,7 @@ import { FollowersComponent } from './components/followers/followers.component';
 import { FollowsComponent } from './components/follows/follows.component';
 import { RefreshSearchComponent } from './components/refresh-search/refresh-search.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { TermsComponent } from './components/terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
     FollowersComponent,
     FollowsComponent,
     RefreshSearchComponent,
-    ProfileCardComponent
+    ProfileCardComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,

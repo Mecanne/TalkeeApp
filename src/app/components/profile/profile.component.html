@@ -30,7 +30,7 @@
         <div class="card gedf-card">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                    <li class="nav-item mx-auto">
+                    <li class="nav-item w-100">
                         <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Comparte un post</a>
                     </li>
                 </ul>
@@ -57,7 +57,7 @@
         <!-- Post /////-->
         <ng-container *ngIf="posts.length;else elseTemplate">
             <div *ngFor="let post of posts">
-                <app-post [UserName]="user.UserName" [Content]="post.content" [type]="post.type" [date]="post.date" [Url]="user.urlImagen">
+                <app-post [UserName]="user.UserName" [Content]="post.content" [type]="post.type" [date]="post.date" [Url]="user.urlImagen" [UserID]="user.UserID">
                 </app-post>
             </div>
         </ng-container>

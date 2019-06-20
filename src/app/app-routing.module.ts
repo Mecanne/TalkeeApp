@@ -13,6 +13,7 @@ import { ViewProfileComponent } from './components/view-profile/view-profile.com
 import { FollowsComponent } from './components/follows/follows.component';
 import { FollowersComponent } from './components/followers/followers.component';
 import { RefreshSearchComponent } from './components/refresh-search/refresh-search.component';
+import { TermsComponent } from './components/terms/terms.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'follows/:id', component: FollowsComponent, canActivate: [AuthService] },
   { path: 'refreshsearch/:query', component: RefreshSearchComponent, canActivate: [AuthService] },
   { path: 'search/:query', component: SearchComponent, canActivate: [AuthService] },
+  { path: 'terms', component: TermsComponent},
   { path: '**', redirectTo: '/login' }
 ];
 
