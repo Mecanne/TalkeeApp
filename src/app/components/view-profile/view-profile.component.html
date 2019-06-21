@@ -13,37 +13,48 @@
                         <div class="h7" *ngIf="user.description">{{ user.description }}</div>
                         <div class="h7" *ngIf="!user.description">Descripción de Anonymous</div>
                     </div>
-                    <div class="col-4">
-                        <button class="btn btn-info" *ngIf="user.userName !== loggedUser.UserName"><i class="fas fa-plus"></i> Seguir</button>
+                    <div class="col-4" *ngIf="loadComplete">
+                        <button class="btn btn-info" *ngIf="user.userName !== localuser.UserName && !followed" (click)="follow()"><i class="fas fa-plus"></i> <br> Seguir</button>
+                        <button class="btn btn-danger" *ngIf="user.userName !== localuser.UserName && followed" (click)="unfollow()"><i class=" fas fa-times "></i> <br> Dejar de Seguir</button>
                     </div>
                 </div>
             </div>
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush ">
                 <li class="list-group-item">
-                    <div class="h6 text-muted">Seguidores</div>
-                    <div class="h5">0</div>
+                    <a class="h6 text-muted" [routerLink]="['/followers/', id ]" routerLinkActive="router-link-active">Seguidores</a>
+                    <div class="h5">{{ followers }}</div>
                 </li>
                 <li class="list-group-item">
-                    <div class="h6 text-muted">Seguidos</div>
-                    <div class="h5">0</div>
+                    <a class="h6 text-muted" [routerLink]="['/follows/', id ]" routerLinkActive="router-link-active">Seguidos</a>
+                    <div class="h5">{{ follows }}</div>
                 </li>
             </ul>
 
         </div>
     </div>
-    <div class="col-md-8 gedf-main">
+    <div class="col-md-8 gedf-main ">
 
-        <ng-container *ngIf="posts.length;else elseTemplate">
-            <div *ngFor="let post of posts">
-                <app-post [UserName]="user.userName" [Content]="post.content" [type]="post.type" [date]="post.date" [Url]="user.urlImagen">
-                </app-post>
-            </div>
+        <ng-container *ngIf="loadComplete; else elseTemplate ">
+            <ng-container *ngIf="posts.length> 0;else elseTemplate">
+                <div *ngFor="let post of posts">
+                    <app-post [UserName]="user.userName" [Content]="post.content" [type]="post.type" [date]="post.date" [Url]="user.urlImagen">
+                    </app-post>
+                </div>
+            </ng-container>
+            <ng-template #elseTemplate>
+                <div>
+                    <h4 class="text-center">No hay posts disponibles</h4>
+                </div>
+            </ng-template>
         </ng-container>
         <ng-template #elseTemplate>
-            <div>
-                <h4 class="text-center">No hay posts disponibles</h4>
+            <div class="d-flex justify-content-center m-5 p-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
             </div>
         </ng-template>
+
 
     </div>
 </div>

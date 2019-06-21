@@ -26,4 +26,8 @@ export class PostService {
     return this.http.post(environment.API_URL + 'Post', post);
   }
 
+  deletePost(id: any) {
+    return this.http.delete(environment.API_URL + 'Post/' + id);
+  }
+
 }

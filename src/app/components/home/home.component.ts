@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
           post.date = new Date(post.date).toLocaleString();
         });
         this.callComplete = true;
-        console.log(this.posts);
       });
   }
 

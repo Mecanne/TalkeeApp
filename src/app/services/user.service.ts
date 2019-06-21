@@ -30,7 +30,7 @@ export class UserService {
   }
 
   deleteUser(id: any) {
-    return this.http.delete(environment.API_URL + 'User/delete/' + id);
+    return this.http.delete(environment.API_URL + 'User/' + id);
   }
 
   getUserID() {
@@ -64,15 +64,23 @@ export class UserService {
   }
 
   getFollowers(id: any) {
-    return this.http.get(environment.API_URL + 'Followers/' + id);
+    return this.http.get(environment.API_URL + 'Follow/followers/' + id);
   }
 
   getFollows(id: any) {
-    return this.http.get(environment.API_URL + 'Follows/' + id);
+    return this.http.get(environment.API_URL + 'Follow/follows/' + id);
   }
 
-  isFollowedByUser(id): any {
-    return this.http.get(environment.API_URL + 'Follower/isFollowedBy/' + id);
+  addFollow(model: any) {
+    return this.http.post(environment.API_URL + 'Follow', model);
+  }
+
+  deleteFollow(userid, followid) {
+    return this.http.delete(environment.API_URL + 'Follow?userid=' + userid + '&followid=' + followid);
+  }
+
+  isFollowedByUser(userid: any, followid: any) {
+    return this.http.get(environment.API_URL + 'Follow/test?userid=' + userid +'&followid=' + followid);
   }
 
 }

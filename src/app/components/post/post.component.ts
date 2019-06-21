@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-post',
@@ -18,7 +19,7 @@ export class PostComponent implements OnInit {
   formTexto: FormGroup;
   formImagen: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private postService: PostService) { }
 
   ngOnInit() {
     this.formTexto = this.fb.group({
@@ -28,6 +29,15 @@ export class PostComponent implements OnInit {
       imagen: null,
       texto: ''
     });
+  }
+
+  deletePost(id: any) {
+    this.postService.deletePost(id)
+      .subscribe(resp => {
+        
+      }, error => {
+        console.log(error);
+      });
   }
 
 }

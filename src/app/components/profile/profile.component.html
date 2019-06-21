@@ -13,11 +13,11 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <a class="h6 text-muted" [routerLink]="['/followers/', user.UserID ]" routerLinkActive="router-link-active">Seguidores</a>
-                    <div class="h5">0</div>
+                    <div class="h5">{{ followers }}</div>
                 </li>
                 <li class="list-group-item">
                     <a class="h6 text-muted" [routerLink]="['/follows/', user.UserID ]" routerLinkActive="router-link-active">Seguidos</a>
-                    <div class="h5">0</div>
+                    <div class="h5">{{ follows }}</div>
                 </li>
                 <li class="list-group-item">
                     <a class="nav-link dropdown-item" [routerLink]="[ '/settings' ]" routerLinkActive="active"><i
@@ -41,11 +41,13 @@
                         <form [formGroup]="formPost">
                             <div class="form-group">
                                 <label class="sr-only" for="message">post</label>
-                                <textarea class="form-control" formControlName="texto" rows="3" placeholder="¿Qué estás pensando?"></textarea>
+                                <textarea class="form-control" formControlName="texto" rows="3" placeholder="¿Qué estás pensando?" [(ngModel)]="texto" (ngModelChange)="comprobarTexto(texto)"></textarea>
                             </div>
+                            <small class="d-block float-right">{{texto.length}}/400</small>
                             <div class="btn-toolbar justify-content-between">
                                 <div class="btn-group">
-                                    <button type="submit" class="btn btn-primary btn-block" (click)="createPost(formPost.value)">Compartir</button>
+                                    <button type="submit" class="btn btn-primary btn-block" (click)="createPost(formPost.value)" *ngIf="formPost.valid">Compartir</button>
+                                    <button type="submit" class="btn btn-primary btn-block" disabled *ngIf="formPost.invalid">Compartir</button>
                                 </div>
                             </div>
                         </form>

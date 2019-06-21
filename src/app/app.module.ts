@@ -27,7 +27,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ViewProfileComponent } from './components/view-profile/view-profile.component';
 import { FollowersComponent } from './components/followers/followers.component';
 import { FollowsComponent } from './components/follows/follows.component';
-import { RefreshSearchComponent } from './components/refresh-search/refresh-search.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { TermsComponent } from './components/terms/terms.component';
 
@@ -48,7 +47,6 @@ import { TermsComponent } from './components/terms/terms.component';
     ViewProfileComponent,
     FollowersComponent,
     FollowsComponent,
-    RefreshSearchComponent,
     ProfileCardComponent,
     TermsComponent
   ],
