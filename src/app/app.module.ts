@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
-import { FeedComponent } from './components/feed/feed.component';
 import { SearchComponent } from './components/search/search.component';
 import { PostComponent } from './components/post/post.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -36,7 +35,6 @@ import { TermsComponent } from './components/terms/terms.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    FeedComponent,
     SearchComponent,
     PostComponent,
     ProfileComponent,

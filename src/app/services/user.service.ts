@@ -38,13 +38,7 @@ export class UserService {
   }
 
   getUser(id) {
-    this.http.get(environment.API_URL + 'User/byid?id=' + id)
-      .subscribe(resp => {
-        console.log(resp);
-        return resp[0];
-      }, error => {
-        console.log(error);
-      });
+    return this.http.get(environment.API_URL + 'User/byid?id=' + id);
   }
 
   getUserProfile(id) {

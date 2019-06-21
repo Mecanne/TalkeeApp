@@ -1,15 +1,16 @@
+<h3 class="text-center mt-4" *ngIf="user"><small>Usuarios a los que sigue</small> {{ user.userName }}</h3>
+<hr class="w-50">
 <ng-container *ngIf="loadComplete; else elseTemplate">
-    <ng-container *ngIf="users.legnth > 0; else elseTemplate">
+    <ng-container *ngIf="users.length == 0 && loadComplete; else elseTemplate">
+        No se han encontrado resultados
+    </ng-container>
+    <ng-template #elseTemplate>
         <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
             <ng-container *ngFor="let user of users">
                 <app-profile-card [url]="user.urlImagen" [name]="user.userName" [description]="user.description" [id]="user.userID"></app-profile-card>
             </ng-container>
         </div>
-    </ng-container>
-    <ng-template #elseTemplate>
-        No se han encontrado resultados
     </ng-template>
-
 </ng-container>
 <ng-template #elseTemplate>
     <div class="d-flex justify-content-center m-5 p-5">

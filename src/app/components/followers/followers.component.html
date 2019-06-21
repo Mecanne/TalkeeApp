@@ -1,3 +1,5 @@
+<h3 class="text-center mt-4" *ngIf="user"><small>Seguidores de </small> {{ user.userName }}</h3>
+<hr class="w-50">
 <ng-container *ngIf="loadComplete; else elseTemplate">
     <ng-container *ngIf="users.length > 0; else elseTemplate">
         <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">

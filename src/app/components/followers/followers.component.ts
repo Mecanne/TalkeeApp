@@ -13,6 +13,7 @@ export class FollowersComponent implements OnInit {
   id: any;
   users: any;
   loadComplete: boolean;
+  user: any;
 
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 
@@ -25,7 +26,13 @@ export class FollowersComponent implements OnInit {
     this.userService.getFollowers(this.id)
       .subscribe((resp: any) => {
         this.users = resp && resp.length ? resp.map(r => r as UserModel) : [];
-        console.log(this.users);
+        this.user = this.userService.getUser(this.id)
+          .subscribe((resp: any) => {
+            const users = resp && resp.length ? resp.map(r => r as UserModel) : [];
+            this.user = users[0];
+          }, error => {
+            console.log(error);
+          });
         this.loadComplete = true;
       }, error => {
         this.loadComplete = true;
